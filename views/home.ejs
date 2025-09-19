@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Resume</title>
+    <link rel="stylesheet" href="/home.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Create Your Resume</h2>
+        <form id="resume-form" action="/resume" method="POST">
+
+            <div class="form-section">
+                <h3>Your Name</h3>
+                <div class="input-group">
+                    <textarea id="textarea1" placeholder="e.g., Emma Watson"></textarea>
+                    <p class="added1 added-feedback-1"></p>
+                </div>
+                <h3>Job Title</h3>
+                <div class="input-group2">
+                    <textarea id="textarea1-1" placeholder="e.g.,Software Engineer"></textarea>
+                     <p class="added1-1 added-feedback-1"></p>
+                </div>
+               <button type="button" class="btn1 add-btn">Add</button>
+            </div>
+
+            <!-- COntact info -->
+        <div class="form-section">
+            <h3>Contact Info</h3>
+            <div class="contact-grid">
+                <div class="contact-group">
+                    <textarea id="textarea2" placeholder="Contact number"></textarea>
+                    <p class="added2 added-feedback"></p>
+                </div>
+
+            <div class="contact-group">
+                <textarea id="textarea2-1" placeholder="Email address"></textarea>
+                <p class="added2-1 added-feedback"></p>
+            </div>
+
+        <div class="contact-group">
+            <textarea id="textarea2-2" placeholder="LinkedIn profile URL"></textarea>
+            <p class="added2-2 added-feedback"></p>
+        </div>
+         <button type="button" class="btn2 add-btn">Add</button>
+     </div>
+
+            <div class="form-section">
+                <h3>Skills</h3>
+                <p class="instructions">Enter your skills separated by commas.</p>
+                <div class="input-group">
+                    <textarea id="textarea3" placeholder="e.g., HTML, CSS, JavaScript"></textarea>
+                    <button type="button" class="btn3 add-btn">Add Skills</button>
+                </div>
+                <p class="added3 added-feedback"></p>
+            </div>
+            
+            <div class="form-section">
+                <h3>Professional Experience</h3>
+                <textarea id="textarea4" placeholder="Describe your work experience..."></textarea>
+                <div class="input-group">
+                    <p class="added4 added-feedback"></p>
+                    <button type="button" class="btn4 add-btn" style="margin-left: auto;">Add</button>
+                </div>
+            </div>
+            <!-- Projects and Awards -->
+            <div class="form-section">
+                <h3>Projects and Awards</h3>
+                <textarea id="textarea5" placeholder="Detail your projects and awards..."></textarea>
+                <div class="input-group">
+                    <p class="added5 added-feedback"></p>
+                    <button type="button" class="btn5 add-btn" style="margin-left: auto;">Add</button>
+                </div>
+            </div>
+
+            
+     <!-- EDUCATION SECTION -->
+      <div class="form-section">
+            <h3>EDUCATION</h3>
+            <div class="contact-grid">
+                <div class="contact-group">
+                    <textarea id="textarea6" placeholder="YOUR DEGREE NAME / MAJOR"></textarea>
+                    <p class="added6 added-feedback"></p>
+                </div>
+
+            <div class="contact-group">
+                <textarea id="textarea6-1" placeholder="University name"></textarea>
+                <p class="added6-1 added-feedback"></p>
+            </div>
+
+            <div class="contact-group">
+                <textarea id="textarea6-2" placeholder="Starting-ending year"></textarea>
+                <p class="added6-2 added-feedback"></p>
+            </div>
+             <button type="button" class="btn6 add-btn">Add</button>
+        </div>
+
+            <input type="hidden" name="resumeData" id="resume-data-hidden">
+            
+            <button type="submit" class="submit-btn">Create Resume</button>
+        </form>
+    </div>
+    <script src="/script.js"></script> 
+</body>
+</html>

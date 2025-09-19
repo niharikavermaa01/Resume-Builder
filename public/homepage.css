@@ -1,0 +1,254 @@
+:root {
+    --background-color: #132a13;
+    --primary-color: #31572c;
+    --secondary-color: #4f772d;
+    --accent-color: #90a955;
+    --fourth-color: #ecf39e;
+    --text-color: white;
+    --ticker-speed: 25s; /* Slightly slower for a more relaxed feel */
+    --transition-speed: 0.4s;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* === ENHANCEMENT: Smooth scrolling === */
+}
+
+/* === ENHANCEMENT: Smoother and softer mouse glow === */
+.mouse-glow {
+    position: fixed;
+    left: -250px; /* Center it initially */
+    top: -250px;
+    z-index: 0;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(79, 119, 45, 0.25) 0%, rgba(79, 119, 45, 0) 60%);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.2s ease-out; /* Use transform for better performance */
+    filter: blur(10px);
+}
+
+.navbar {
+    letter-spacing: 1px;
+    font-size: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 8px #0000008e;
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(49, 87, 44, 0.8);
+}
+
+.ticker-move {
+    display: flex;
+    animation: scroll-left-to-right var(--ticker-speed) linear infinite;
+    transition: animation-play-state 0.5s ease; /* Smooth pause/play transition */
+}
+
+/* === ENHANCEMENT: Pause ticker on hover === */
+.navbar:hover .ticker-move {
+    animation-play-state: paused;
+}
+
+.navbar p { 
+    white-space: nowrap; 
+    padding: 15px 40px; 
+    margin: 0; 
+    font-family: "Playfair Display", serif; 
+}
+
+@keyframes scroll-left-to-right {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.hero-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 90vh;
+    padding: 0 8%;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 50%;
+    z-index: 2;
+}
+
+/* === ENHANCEMENT: More refined load-in animation === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* === ENHANCEMENT: New animation for the image === */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.hero-content h1, .hero-content .subtitle, .hero-content .cta-button {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+.hero-content h1 { animation-delay: 0.3s; }
+.hero-content .subtitle { animation-delay: 0.5s; }
+.hero-content .cta-button { animation-delay: 0.7s; }
+
+.hero-content h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.2;
+    margin-bottom: 100px;
+    margin-top: -200px;
+    background: linear-gradient(45deg, var(--fourth-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content .subtitle {
+    position: absolute;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    margin-top: -60px;
+    max-width: 500px;
+}
+
+.cta-button {
+    position: absolute;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(144, 169, 85, 0.3);
+    margin-top: 10px;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(236, 243, 158, 0.4);
+}
+
+/* === ENHANCEMENT: Added active state for click feedback === */
+.cta-button:active {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(236, 243, 158, 0.3);
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* === ENHANCEMENT: Animating the image on load === */
+.video-background img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0; /* Start hidden */
+    animation: fadeInRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
+}
+
+.wave-container {
+    position: absolute;
+    bottom: -1px; /* Overlap slightly to prevent gaps */
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    line-height: 0;
+    pointer-events: none;
+}
+
+/* === ENHANCEMENT: Keyframes for the wave animation === */
+@keyframes wave-flow {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-40px); }
+    100% { transform: translateX(0); }
+}
+
+/* === ENHANCEMENT: Applying animations to SVG paths for parallax effect === */
+.wave-container svg path:nth-of-type(1) {
+    animation: wave-flow 15s ease-in-out infinite alternate;
+}
+
+.wave-container svg path:nth-of-type(2) {
+    animation: wave-flow 20s ease-in-out infinite alternate-reverse;
+}
+
+
+/* === RESPONSIVE DESIGN FOR MOBILE DEVICES === */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        height: auto;
+        padding: 10vh 5%;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        order: 2; /* Move text content below the image */
+    }
+
+    .hero-content h1 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero-content .subtitle, .cta-button {
+        position: static; /* Remove absolute positioning to flow naturally */
+        margin-top: 20px;
+    }
+
+    .video-background {
+        position: relative; /* Change from absolute to relative */
+        width: 80%;
+        height: auto;
+        order: 1; /* Move image above the text */
+        margin-bottom: 40px;
+    }
+
+    .mouse-glow {
+        display: none; /* Hide the mouse glow effect on touch devices */
+    }
+}

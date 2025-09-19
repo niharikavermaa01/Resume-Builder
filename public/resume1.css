@@ -1,0 +1,196 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5; 
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.resume-container {
+    max-width: 850px;
+    min-height: 1100px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.resume-header {
+    padding: 35px 45px;
+    text-align: left;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.resume-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em;
+    margin: 0;
+    color: #1a2533;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.resume-header .professional-title {
+    font-size: 1.15em;
+    color: #007bff; /* Professional blue */
+    margin-top: 5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.resume-main {
+    display: flex;
+    flex-grow: 1; 
+}
+
+.left-column {
+    background-color: #f8f9fa;
+    padding: 30px;
+    width: 38%;
+    border-right: 1px solid #e9ecef;
+}
+
+.left-column h2 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #343a40;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 8px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.left-column ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Contact Info */
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #495057;
+}
+
+.contact-info i {
+    color: #007bff;
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.contact-info a {
+    color: #0056b3;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Education & Skills */
+.education-info, .skills-info {
+    margin-top: 35px;
+}
+
+.education-item {
+    margin-bottom: 20px;
+}
+
+.education-item h3 {
+    font-size: 1.05em;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.education-item p {
+    font-size: 0.9em;
+    margin: 0;
+    color: #6c757d;
+}
+
+/* Skills */
+.skills-info li {
+    padding: 5px 0;
+    font-size: 0.95em;
+    color: #495057;
+}
+
+/* Right Column Styling */
+.right-column {
+    padding: 30px 40px;
+    width: 62%;
+}
+
+.right-column h2 {
+    font-size: 1.2em;
+    color: #1a2533;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.experience-item p, .project-item p {
+    margin: 0;
+    font-size: 0.95em;
+    color: #555;
+    white-space: pre-wrap; /* Preserves line breaks from textarea */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+    .resume-container {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        max-width: 100%;
+    }
+    .resume-main {
+        flex-direction: column;
+    }
+
+    .left-column, .right-column {
+        width: 100%;
+        box-sizing: border-box; /* Ensures padding is part of the width */
+        border-right: none;
+    }
+
+    .resume-header {
+        padding: 25px;
+        text-align: center;
+    }
+
+    .resume-header h1 {
+        font-size: 2.2em;
+    }
+}
+.download-container{
+  text-align: center;
+  height: 50px;
+}
+#downloadBtn{
+    font-size: 20px;
+    padding: 10px;
+ 
+
+}

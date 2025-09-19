@@ -1,0 +1,252 @@
+/* --- Root Variables & Base Setup --- */
+:root {
+    --background-color: #132a13;
+    --primary-color: #31572c;
+    --secondary-color: #4f772d;
+    --accent-color: #90a955;
+    --fourth-color: #ecf39e;
+    --text-color: #f0f0f0; /* Slightly off-white for softer text */
+    --placeholder-color: #a0a0a0;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* A clean, modern font */
+    background: radial-gradient(#f88884,#e3ee7c,#56b856, #132a13);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* --- Main Form Container --- */
+/* --- Main Form Container --- */
+.form-container {
+    width: 100%;
+    max-width: 950px; /* MODIFIED: Increased from 700px */
+    background-color: var(--primary-color);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--fourth-color);
+    margin-top: 0;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* --- Form Sections --- */
+.form-section {
+    margin-bottom: 35px;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 35px;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 10px;
+}
+
+.form-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 10px;
+}
+
+p.instructions {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+/* --- Styled Form Elements --- */
+textarea {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 2px solid var(--secondary-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea::placeholder {
+    color: var(--placeholder-color);
+    opacity: 0.7;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(144, 169, 85, 0.5);
+}
+
+.contact-group, .input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-group textarea {
+    flex-grow: 1; /* Allows textarea to take up available space */
+}
+
+/* --- Buttons --- */
+.add-btn {
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.added-feedback {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--fourth-color);
+    opacity: 0.9;
+    margin: 5px 0 0 0;
+    min-height: 1.2em; /* Prevents layout shift when text appears */
+}
+
+/* --- Final Submit Button --- */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: var(--fourth-color);
+    box-shadow: 0 5px 15px rgba(236, 243, 158, 0.2);
+    transform: translateY(-3px);
+}
+
+/* --- ADD THIS NEW RULE --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    gap: 20px; /* Adds space between the columns */
+}
+
+/* =================================================== */
+/* ===== 1. ADVANCED ANIMATIONS & TRANSITIONS ===== */
+/* =================================================== */
+
+/* --- Animated Gradient Background --- */
+@keyframes gradient-pan {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    /* Make the gradient larger so we can pan across it */
+    background-size: 400% 400%;
+    animation: gradient-pan 20s ease infinite;
+}
+
+
+/* --- Staggered Form Section Load-in Animation --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-section {
+    /* Prepare sections for animation */
+    opacity: 0; 
+    animation: fadeInUp 0.7s ease-out forwards;
+}
+
+/* Add a delay to each section to create the staggered effect */
+.form-section:nth-of-type(1) { animation-delay: 0.1s; }
+.form-section:nth-of-type(2) { animation-delay: 0.2s; }
+.form-section:nth-of-type(3) { animation-delay: 0.3s; }
+.form-section:nth-of-type(4) { animation-delay: 0.4s; }
+.form-section:nth-of-type(5) { animation-delay: 0.5s; }
+.form-section:nth-of-type(6) { animation-delay: 0.6s; }
+
+
+/* --- Interactive Focus Effect on Form Sections --- */
+.form-section {
+    transition: transform 0.3s ease;
+}
+
+/* When you click inside any textarea, the whole section reacts */
+.form-section:focus-within {
+    transform: scale(1.01);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* The section heading also lights up */
+.form-section:focus-within h3 {
+    color: var(--fourth-color);
+}
+
+
+/* --- Button Click Animation (Tactile Feedback) --- */
+.add-btn:active, .submit-btn:active {
+    transform: translateY(0) scale(0.97); /* Removes hover lift and shrinks */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); /* Creates an "pushed in" effect */
+}
+
+
+/* --- Shimmer Effect on Main Title --- */
+.form-container h2 {
+    background: linear-gradient(90deg, var(--fourth-color), var(--text-color), var(--fourth-color));
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: -200% center;
+    }
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Resume</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/resume1.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <!-- NEW: Added a style block specifically for PDF printing -->
+    <style>
+        @media print {
+            /* This ensures the styles are only applied when printing to PDF */
+            .resume-main {
+                display: block !important; /* Force a single column layout */
+            }
+            .left-column, .right-column {
+                width: 100% !important; /* Make both columns full-width */
+                padding: 0 !important;
+                float: none !important;
+            }
+            .download-container {
+                display: none; /* Hide the download button in the PDF itself */
+            }
+            body, .resume-container {
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container" id="resume-to-print">
+        <header class="resume-header">
+            <h1><%= resume_info.name %></h1>
+            <p class="professional-title"><%= resume_info.Job_title %></p>
+        </header>
+
+        <main class="resume-main">
+            <aside class="left-column">
+                <section class="contact-info">
+                    <h2>CONTACT</h2>
+                    <ul>
+                        <li><i class="fas fa-phone-alt"></i> <span><%= resume_info.contact %></span></li>
+                        <li><i class="fas fa-envelope"></i> <span><%= resume_info.email %></span></li>
+                        <li><i class="fab fa-linkedin"></i> <span><a href="<%= resume_info.linkedin %>" target="_blank">LinkedIn</a></span></li>
+                    </ul>
+                </section>
+
+                <section class="education-info">
+                    <h2>EDUCATION</h2>
+                    <% if (resume_info.education && resume_info.education.length > 0) { %>
+                        <% resume_info.education.forEach(edu => { %>
+                            <div class="education-item">
+                                <h3><%= edu.degree %></h3>
+                                <p><%= edu.university %></p>
+                                <p><%= edu.year %></p>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                </section>
+                <section class="skills-info">
+                    <h2>SKILLS</h2>
+                    <ul>
+                        <% if (resume_info.skills && resume_info.skills.length > 0) { %>
+                            <% resume_info.skills.forEach(skill => { %>
+                                <li><%= skill %></li>
+                            <% }) %>
+                        <% } %>
+                    </ul>
+                </section>
+            </aside>
+        
+            <div class="right-column">
+                <section class="experience">
+                    <h2>PROFESSIONAL EXPERIENCE</h2>
+                    <div class="experience-item">
+                       <p><%- resume_info.experience.replace(/\n/g, '<br>') %></p>
+                    </div>
+                </section>
+
+                <section class="projects">
+                    <h2>PROJECTS AND AWARDS</h2>
+                    <div class="project-item">
+                         <p><%- resume_info.projectsAwards.replace(/\n/g, '<br>') %></p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <div class="download-container">
+        <button id="downloadBtn">Download as PDF</button>
+    </div>
+
+
+    <script>
+        document.getElementById("downloadBtn").addEventListener("click", () => {
+            const resumeElement = document.getElementById("resume-to-print");
+
+            const options = {
+                margin:       0.5, // A standard margin for printing
+                filename:     'resume.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { 
+                    scale: 2,
+                    useCORS: true // Important for loading external images/fonts
+                },
+                jsPDF:        { 
+                    unit: 'in', 
+                    format: 'a4', // Use the standard A4 paper size
+                    orientation: 'portrait' 
+                }
+            };
+
+            html2pdf().set(options).from(resumeElement).save();
+        });
+    </script>
+</body>
+</html>
+
