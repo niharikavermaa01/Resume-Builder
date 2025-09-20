@@ -28,7 +28,7 @@ app.post("/resume", (req, res) => {
         }
         else{
             const resumeObject = JSON.parse(resumeDataString);
-            res.render("resume.ejs", { resumeObject: resume_info });
+            res.render("resume.ejs", { resume_info: resumeObject });
             console.log(resumeObject);
         }
     } catch (error) {
