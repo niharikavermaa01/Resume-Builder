@@ -49,7 +49,11 @@
                     <ul>
                         <li><i class="fas fa-phone-alt"></i> <span><%= resume_info.contact %></span></li>
                         <li><i class="fas fa-envelope"></i> <span><%= resume_info.email %></span></li>
-                        <li><i class="fab fa-linkedin"></i> <span><%= resume_info.linkedin %></span></li>
+                        <li><i class="fab fa-linkedin"></i> <span>
+                            <% if (resume_info.linkedin) { %>
+                                        <p>LinkedIn: <%= resume_info.linkedin %></p>
+                                        <% } %>
+                        </span></li>
                     </ul>
                 </section>
 
