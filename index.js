@@ -3,9 +3,6 @@ const app = express();
 const port = process.env.PORT || 8080;
 const path = require("path");
 const {v4: uuidv4} = require('uuid');
-const puppeteer = require('puppeteer');
-const ejs = require('ejs');
-const fs = require('fs');
 
 app.use(express.urlencoded({extended:true}));
 app.set("view engine", "ejs");
