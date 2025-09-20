@@ -36,74 +36,65 @@
     </style>
 </head>
 <body>
-    <div class="resume-container" id="resume-to-print">
-        <header class="resume-header">
-            <h1><%= resume_info.name %></h1>
-            <p class="professional-title"><%= resume_info.Job_title %></p>
-        </header>
+  <div class="resume" id="resume">
+        <div class="header">
+            <% if (resume_info.name) { %>
+                <h1><%= resume_info.name %></h1>
+            <% } %>
+            <% if (resume_info.Job_title) { %>
+                <p><%= resume_info.Job_title %></p>
+            <% } %>
+        </div>
 
-        <main class="resume-main">
-            <aside class="left-column">
-                <section class="contact-info">
-                    <h2>CONTACT</h2>
-                    <ul>
-                        <li><i class="fas fa-phone-alt"></i> <span><%= resume_info.contact %></span></li>
-                        <li><i class="fas fa-envelope"></i> <span><%= resume_info.email %></span></li>
-                        <li> <i class="fab fa-linkedin"></i> <span>
-                            <% if (resume_info.linkedin) { %>
-                            <a href="<%= resume_info.linkedin %>" target="_blank">
-                                <%= resume_info.linkedin %>
-                            </a>
-                        <% } %>
-                        </span></li>
-                    </ul>
-                </section>
+        <div class="contact-info">
+            <ul>
+                <% if (resume_info.contact) { %>
+                    <li><i class="fas fa-phone"></i> <%= resume_info.contact %></li>
+                <% } %>
+                <% if (resume_info.email) { %>
+                    <li><i class="fas fa-envelope"></i> <%= resume_info.email %></li>
+                <% } %>
+                <% if (resume_info.linkedin) { %>
+                    <li><i class="fab fa-linkedin"></i> <a href="<%= resume_info.linkedin %>" target="_blank"><%= resume_info.linkedin %></a></li>
+                <% } %>
+            </ul>
+        </div>
 
-                <section class="education-info">
-                    <h2>EDUCATION</h2>
-                    <% if (resume_info.education && resume_info.education.length > 0) { %>
-                        <% resume_info.education.forEach(edu => { %>
-                            <div class="education-item">
-                                <h3><%= edu.degree %></h3>
-                                <p><%= edu.university %></p>
-                                <p><%= edu.year %></p>
-                            </div>
-                        <% }) %>
-                    <% } %>
-                </section>
-                <section class="skills-info">
-                    <h2>SKILLS</h2>
-                    <ul>
-                        <% if (resume_info.skills && resume_info.skills.length > 0) { %>
-                            <% resume_info.skills.forEach(skill => { %>
-                                <li><%= skill %></li>
-                            <% }) %>
-                        <% } %>
-                    </ul>
-                </section>
-            </aside>
-        
-            <div class="right-column">
-                <section class="experience">
-                    <h2>PROFESSIONAL EXPERIENCE</h2>
-                    <div class="experience-item">
-                       <p><%- resume_info.experience.replace(/\n/g, '<br>') %></p>
-                    </div>
-                </section>
-
-                <section class="projects">
-                    <h2>PROJECTS AND AWARDS</h2>
-                    <div class="project-item">
-                         <p><%- resume_info.projectsAwards.replace(/\n/g, '<br>') %></p>
-                    </div>
-                </section>
+        <% if (resume_info.skills && resume_info.skills.length > 0) { %>
+            <div class="section">
+                <h2>Skills</h2>
+                <ul class="skills">
+                    <% resume_info.skills.forEach(skill => { %>
+                        <li><%= skill %></li>
+                    <% }) %>
+                </ul>
             </div>
-        </main>
-    </div>
-    <div class="download-container">
-        <button id="downloadBtn">Download as PDF</button>
-    </div>
+        <% } %>
 
+        <% if (resume_info.experience) { %>
+            <div class="section">
+                <h2>Professional Experience</h2>
+                <p><%= resume_info.experience %></p>
+            </div>
+        <% } %>
+
+        <% if (resume_info.projectsAwards) { %>
+            <div class="section">
+                <h2>Projects and Awards</h2>
+                <p><%= resume_info.projectsAwards %></p>
+            </div>
+        <% } %>
+
+        <% if (resume_info.degree || resume_info.university || resume_info.year) { %>
+            <div class="section">
+                <h2>Education</h2>
+                <% if (resume_info.degree) { %><p><strong>Degree:</strong> <%= resume_info.degree %></p><% } %>
+                <% if (resume_info.university) { %><p><strong>University:</strong> <%= resume_info.university %></p><% } %>
+                <% if (resume_info.year) { %><p><strong>Year:</strong> <%= resume_info.year %></p><% } %>
+            </div>
+        <% } %>
+    </div>
+    <button id="downloadBtn">Download PDF</button>
 
     <script>
         document.getElementById("downloadBtn").addEventListener("click", () => {
