@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const resumeData = {};
-
     // --- Name Section ---
     const btn1 = document.querySelector(".btn1");
     const p1 = document.querySelector(".added1");
